@@ -15,9 +15,4 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Exit");
         Application.Quit();
     }
-
-    public void ShowLeaderboard()
-    {
-        SceneManager.LoadScene("ShowLeaderboard");
-    }
 }

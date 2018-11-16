@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public Text timerText;
     private float startTime;
-    private float finalTime;
+    private string finalTime;
     private bool start = false;
     private bool finished = false;
 
@@ -23,7 +22,6 @@ public class Timer : MonoBehaviour
         { 
 
             float timeDiff = Time.time - startTime;
-            finalTime = timeDiff;
 
             string minutes = ((int)timeDiff / 60).ToString();
             string seconds = (timeDiff % 60).ToString("f0");
@@ -37,17 +35,10 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void SaveScore()
-    {
-        int unsavedScore = (int)finalTime;
-        PlayerPrefs.SetInt("finalScore", unsavedScore);
-        SceneManager.LoadScene("ShowLeaderboard");
-    }
     public void StopTimer()
     {
         finished = true;
         timerText.color = Color.yellow;
-        SaveScore();
     }
 
     public void StartTimer()
