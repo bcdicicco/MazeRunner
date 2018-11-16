@@ -21,3 +21,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("ShowLeaderboard");
     }
 }
+
+
+// Credits:
+// Mario Haberle - wooden fence models
+// Jeff Murray - offline leaderboard functionality and sample
+// ZUGZUG Art - Stone texture
+// ROBOCG - key model 
