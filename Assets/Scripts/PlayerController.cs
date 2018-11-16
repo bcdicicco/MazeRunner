@@ -12,14 +12,55 @@ public class PlayerController : MonoBehaviour
     public Text redKey;
     public Text blueKey;
     public Text yellowKey;
+    public GameObject[] pauseObjects;
 
     void Start()
     {
         redKey.text = "";
         blueKey.text = "";
         yellowKey.text = "";
+        Time.timeScale = 1;
+        pauseObjects = GameObject.FindGameObjectsWithTag("Pause");
+        foreach (GameObject g in pauseObjects)
+        {
+            g.SetActive(false);
+        }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Time.timeScale == 1)
+            {
+                Time.timeScale = 0;
+                foreach (GameObject g in pauseObjects)
+                {
+                    g.SetActive(true);
+                }
+            }
+
+            else if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+                foreach (GameObject g in pauseObjects)
+                {
+                    g.SetActive(false);
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && Time.timeScale == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (Input.GetKeyDown(KeyCode.M) && Time.timeScale == 0)
+        {
+            SceneManager.LoadScene("Title");
+        }
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Red"))
@@ -68,4 +109,5 @@ public class PlayerController : MonoBehaviour
                 blueKey.text = "";
         }
     }
+
 }

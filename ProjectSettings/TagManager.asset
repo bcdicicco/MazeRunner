@@ -10,6 +10,8 @@ TagManager:
   - RedGate
   - BlueGate
   - YellowGate
+  - Start
+  - Pause
   layers:
   - Default
   - TransparentFX
